@@ -25,7 +25,6 @@ class SimpleMsg(BaseModel):
         'd': 'ErrorCode',
         'c': 'ErrorMsg',
         'b': 'IsPresent',
-
     }
 
     def j_flag_2633(self):

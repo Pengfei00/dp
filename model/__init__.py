@@ -122,9 +122,14 @@ class BaseModel:
             data, = self.unpack(">{}s".format(length), self.data)
         elif flag == 0x4e:
             data = b""
+        elif flag == 0x42:
+            length, = self.unpack(">i", self.data)
+            j = (int(length / 0x1000) + 0x1) * 0x1000
+            data, = self.unpack(">{}s".format(length), self.data)
         else:
             logging.error("archive_d_g抛错")
             raise ValueError()
+
         logging.info("找到string:{}".format(data.decode()))
         return data.decode()
 
